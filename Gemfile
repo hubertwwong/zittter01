@@ -59,5 +59,6 @@ group :development, :test do
   gem 'capybara'                # gives you selenium type testing. give you rails DSL like visit.
 end
 
+gem 'devise'
 # note. dont use turn or  win32 console.
 # causes problems...
