@@ -17,10 +17,11 @@
 development:
   adapter: postgresql
   encoding: unicode
+  host: localhost
   database: zittter01_development
   pool: 5
-  username: postgres
-  password: postgres
+  username: rails_user
+  password: rails_user
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -46,14 +47,16 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
+  host: localhost
   database: zittter01_test
   pool: 5
-  username: zittter01
-  password:
+  username: rails_user
+  password: rails_user
 
 production:
   adapter: postgresql
   encoding: unicode
+  host: localhost
   database: zittter01_production
   pool: 5
   username: zittter01
