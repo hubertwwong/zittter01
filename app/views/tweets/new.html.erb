@@ -1,0 +1,10 @@
+<%= form_for :tweet, url: tweets_path do |f| %>
+  <p>
+    <%= f.label :content %><br>
+    <%= f.text_field :content %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
