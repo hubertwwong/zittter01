@@ -1,1 +1,13 @@
-hfdsajkdsfh
+<table>
+  <tr>
+    <th>content</th>
+    <th>id</th>
+  </tr>
+ 
+  <% @tweets.each do |tweet| %>
+    <tr>
+      <td><%= tweet.title %></td>
+      <td><%= tweet.text %></td>
+    </tr>
+  <% end %>
+</table>

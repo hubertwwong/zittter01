@@ -8,6 +8,7 @@ class TweetsController < ApplicationController
   end
 
   def index
+    @tweets = Tweet.all
   end
 
   def new
