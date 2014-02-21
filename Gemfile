@@ -59,6 +59,8 @@ group :development, :test do
   gem 'capybara'                # gives you selenium type testing. give you rails DSL like visit.
 end
 
+# authentication.
 gem 'devise'
-# note. dont use turn or  win32 console.
-# causes problems...
+
+# heroku
+gem 'rails_12factor', group: :production
