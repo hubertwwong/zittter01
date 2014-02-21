@@ -19,6 +19,17 @@ class TweetsController < ApplicationController
     #render text: ">>" + @tweet.content + " " + @tweet.user_id.to_s
   end
 
+  def destroy
+    @tweet = Tweet.find(params[:id])
+    @tweet.destroy
+ 
+    redirect_to tweets_path
+  end
+
+  def edit
+    @tweet = Tweet.find(params[:id])
+  end
+
   # need to make this public...
   def index
     @tweets = Tweet.all

@@ -3,6 +3,14 @@ Zittter01::Application.routes.draw do
 
   devise_for :users
   
+  # config/initializers/high_voltage.rb
+  HighVoltage.configure do |config|
+    config.home_page = 'home'
+  end
+  # config the root to views/pages/home.
+  # the 'home' variable is the page name in the pages directory...
+  # https://github.com/thoughtbot/high_voltage
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

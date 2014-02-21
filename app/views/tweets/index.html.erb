@@ -1,7 +1,25 @@
-<table>
-  <% @tweets.each do |tweet| %>
-    <tr>
-      <td><%= tweet.content %></td>
-    </tr>
-  <% end %>
-</table>
+<div class="row">
+	<!-- main panel -->
+	<div class="col-lg-8">
+		<div class="row">
+			<% @tweets.each do |tweet| %>
+				<!-- actions on tweet -->
+				<div class="col-lg-2">
+					<%= link_to 'edit', edit_tweet_path(tweet) %>
+					|
+					<%= link_to 'delete', tweet_path(tweet),
+                    	method: :delete, data: { confirm: 'Are you sure?' } %>
+				</div>
+				<!-- the actual tweets-->
+				<div class="col-lg-10">
+					<%= tweet.content %>
+				</div>
+			<% end %>
+		</div>
+	</div>
+
+	<!-- side panel -->
+	<div class="col-lg-4">
+		<%= link_to 'new tweet', new_tweet_path %>
+	</div>
+</div>

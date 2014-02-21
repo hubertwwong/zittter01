@@ -62,5 +62,8 @@ end
 # authentication.
 gem 'devise'
 
+# static pages
+gem 'high_voltage'
+
 # heroku
 gem 'rails_12factor', group: :production
