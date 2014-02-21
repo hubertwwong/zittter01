@@ -1,25 +1,63 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Zittter01</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+	<head>
+		<title>Zittter01</title>
+		<%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+		<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+		<%= csrf_meta_tags %>
+	</head>
+	<body>
 
-<!-- devise notice -->
-<% if notice %>
-  <p class="alert alert-notice"><%= notice %></p>
-<% end %>
-<% if alert %>
-  <p class="alert alert-error"><%= alert %></p>
-<% end %>
+		<div class="navbar navbar-inverse">
+			<div class="container">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#">Zittter01</a>
+				</div>
 
-<!-- main content -->
-<div class="starter-template">
-	<%= yield %>
-</div>
+				<div class="nav navbar-nav navbar-right">
+					<% if user_signed_in? %>
+					  <ul class="nav navbar-nav">
+					  	<li>Logged in as <%= current_user.email %></li>
+					  	<li><%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %></li>
+					  	<li><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %></li>
+					  </ul>
+					<% else %>
+					  <ul class="nav navbar-nav">
+					  	<li><%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %></li>
+					  	<li><%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %></li>
+					  </ul>
+					<% end %>
+				</div>
+			</div>
+		</div>
 
-</body>
+		<!-- 
+			devise notice
+			note that the classes are twitter bootstrap ones.
+			the rails alerts might be difernt.
+			if it is, that's annoying. 
+		-->
+		<% if notice %>
+		<div class="container">
+			<div class="alert alert-success">
+				<%= notice %>
+			</div>
+		</div>
+		<% end %>
+		<% if alert %>
+		<div class="container">
+			<div class="alert alert-danger">
+				<%= alert %>
+			</div>
+		</div>
+		<% end %>
+
+		<!-- main content -->
+		<div class="container">
+			<div class="starter-template">
+				<%= yield %>
+			</div>
+		</div>
+
+	</body>
 </html>
