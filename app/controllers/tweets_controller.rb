@@ -1,12 +1,25 @@
 class TweetsController < ApplicationController
 
+  # devise to protect user...
   before_filter :authenticate_user!
 
   def create
+    # using strong params create the object.
+    @tweet = Tweet.new(tweet_params)
+    # add user id
+    @tweet.user_id = current_user.id
+    
+    # saving and redirect to index page.
+    @tweet.save
+    
+    # go back to index page.
+    redirect_to tweets_path
+    
     # debugging
-    render text: params[:post].inspect
+    #render text: ">>" + @tweet.content + " " + @tweet.user_id.to_s
   end
 
+  # need to make this public...
   def index
     @tweets = Tweet.all
   end
@@ -19,8 +32,13 @@ class TweetsController < ApplicationController
   
   private
 
+  # strong params..
+  # new to rails 4.
+  # basically you have to explictly permit params.
+  # probably don't want the user_id to be allowed.
+  # devise should be keeping track of this for you
   def tweet_params
-    params.require(:tweet).permit(:user_id, :content)
+    params.require(:tweet).permit(:content)
   end
   
 end

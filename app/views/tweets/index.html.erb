@@ -1,13 +1,7 @@
 <table>
-  <tr>
-    <th>content</th>
-    <th>id</th>
-  </tr>
- 
   <% @tweets.each do |tweet| %>
     <tr>
-      <td><%= tweet.title %></td>
-      <td><%= tweet.text %></td>
+      <td><%= tweet.content %></td>
     </tr>
   <% end %>
 </table>
