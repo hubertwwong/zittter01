@@ -30,7 +30,6 @@ class TweetsController < ApplicationController
     @tweet = Tweet.find(params[:id])
   end
 
-  # need to make this public...
   def index
     @tweets = Tweet.all
   end
@@ -39,7 +38,19 @@ class TweetsController < ApplicationController
     @tweet = Tweet.new
   end
   
-  
+  def update
+    @tweet = Tweet.find(params[:id])
+    #@tweet = Tweet.find(tweet_params)
+    # add user id
+    @tweet.user_id = current_user.id
+    
+    # updating
+    if @tweet.update(params[:tweet].permit(:content))
+      redirect_to tweets_path
+    else
+      render 'edit'
+    end
+  end
   
   private
 
